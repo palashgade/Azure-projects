@@ -267,7 +267,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
+						"name": "CPY_CSV_PARQUET",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -324,6 +324,39 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "DL_CSV_ADLS",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "CPY_CSV_PARQUET",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "DS_ADLS_CSV",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"enableLogging": false,
+							"storeSettings": {
+								"type": "AzureBlobFSReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
 					}
 				],
 				"policy": {
