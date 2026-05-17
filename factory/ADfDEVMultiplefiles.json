@@ -1,0 +1,15 @@
+{
+	"name": "ADfDEVMultiplefiles",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "northcentralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3c93860a-501a-4607-be50-342e740480fc",
+		"tenantId": "6e17f81f-7324-4543-96fd-052863468da9"
+	}
+}
