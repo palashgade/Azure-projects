@@ -1,0 +1,15 @@
+{
+	"name": "ADFsqltoazuresql",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "070ba5fe-a60f-445c-93b2-7e7bb0310cae",
+		"tenantId": "6e17f81f-7324-4543-96fd-052863468da9"
+	}
+}
