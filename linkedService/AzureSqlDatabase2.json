@@ -1,0 +1,24 @@
+{
+	"name": "AzureSqlDatabase2",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "azuresqlserver016.database.windows.net",
+			"database": "master",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "admindata",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault3",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "keyadminsecret",
+				"secretVersion": "af81c80fca3448edb463249790a234c8"
+			}
+		}
+	}
+}
