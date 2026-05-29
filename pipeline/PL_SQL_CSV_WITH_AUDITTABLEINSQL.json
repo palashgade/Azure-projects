@@ -5,14 +5,7 @@
 			{
 				"name": "CPY_SQL_CSV",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -62,9 +55,16 @@
 				]
 			},
 			{
-				"name": "Get Metadata1",
-				"type": "GetMetadata",
-				"dependsOn": [],
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPY_SQL_CSV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -74,11 +74,36 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "SqlServerTable1",
-						"type": "DatasetReference"
-					},
-					"fieldList": []
+					"storedProcedureName": "[dbo].[loadstatus]",
+					"storedProcedureParameters": {
+						"dataread": {
+							"value": "",
+							"type": "String"
+						},
+						"errorid": {
+							"value": "",
+							"type": "String"
+						},
+						"errormessage": {
+							"value": "",
+							"type": "String"
+						},
+						"loadstatus": {
+							"value": "",
+							"type": "String"
+						},
+						"TableName": {
+							"value": "",
+							"type": "String"
+						},
+						"undefined": {
+							"value": ""
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "SqlServer1",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
