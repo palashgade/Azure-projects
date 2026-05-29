@@ -1,0 +1,21 @@
+{
+	"name": "SQLSERVER_SP",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "PALASHLAPTOP\\SQLEXPRESS",
+			"database": "master",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyMzVhMWFlYS1jMDk1LTRjMmItYTE4MC04OGMyOTFkYjE2NTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SPintegrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

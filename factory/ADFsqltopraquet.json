@@ -1,0 +1,15 @@
+{
+	"name": "ADFsqltopraquet",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "821b6f9a-1d56-405b-9e83-3552bbc6dc16",
+		"tenantId": "6e17f81f-7324-4543-96fd-052863468da9"
+	}
+}

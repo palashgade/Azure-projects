@@ -1,0 +1,6 @@
+{
+	"name": "SPintegrationRuntime1",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
