@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "WarrantyLookup_HP.xlsm",
 				"container": "output"
 			},
 			"columnDelimiter": ",",
