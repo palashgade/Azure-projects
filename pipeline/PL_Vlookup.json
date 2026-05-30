@@ -48,7 +48,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT TOP (10) [BusinessEntityID]\n      ,[NationalIDNumber]\n      ,[LoginID]\n      ,[OrganizationNode]\n      ,[OrganizationLevel]\n      ,[JobTitle]\n      ,[BirthDate]\n      ,[MaritalStatus]\n      ,[Gender]\n      ,[HireDate]\n      ,[SalariedFlag]\n      ,[VacationHours]\n      ,[SickLeaveHours]\n      ,[CurrentFlag]\n      ,[rowguid]\n      ,[ModifiedDate]\n  FROM [AdventureWorks2025].[HumanResources].[Employee]\n",
+						"sqlReaderQuery": "SELECT TOP (1000)\n      [BusinessEntityID],\n      [NationalIDNumber],\n      [LoginID],\n      CAST([OrganizationNode].ToString() AS VARCHAR(100)) AS OrganizationNode,\n      [OrganizationLevel],\n      [JobTitle],\n      [BirthDate],\n      [MaritalStatus],\n      [Gender],\n      [HireDate],\n      [SalariedFlag],\n      [VacationHours],\n      [SickLeaveHours],\n      [CurrentFlag],\n      [rowguid],\n      [ModifiedDate]\nFROM [AdventureWorks2025].[HumanResources].[Employee]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
