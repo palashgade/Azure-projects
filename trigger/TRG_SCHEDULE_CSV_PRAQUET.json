@@ -2,7 +2,7 @@
 	"name": "TRG_SCHEDULE_CSV_PRAQUET",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
