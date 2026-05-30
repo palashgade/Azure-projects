@@ -17,6 +17,15 @@
 		"SqlServer1_password": {
 			"value": ""
 		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage3_connectionString": {
+			"value": ""
+		},
+		"LS_Validation_connectionString": {
+			"value": ""
+		},
 		"SQLSERVER_SP_properties_typeProperties_server": {
 			"value": "PALASHLAPTOP\\SQLEXPRESS"
 		},
@@ -43,6 +52,18 @@
 		},
 		"SqlServer1_properties_typeProperties_userName": {
 			"value": "sa"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://keyvaultprojectdata16.vault.azure.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "azuresqlserver16.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "test_data"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "admindata"
 		}
 	}
 }
