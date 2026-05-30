@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "DS_validation",
 						"type": "DatasetReference"
 					},
 					"timeout": "0.12:00:00",
@@ -68,7 +68,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText1",
+						"referenceName": "DS_validation",
 						"type": "DatasetReference"
 					}
 				],
