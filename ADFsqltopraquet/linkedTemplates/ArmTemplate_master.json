@@ -7,21 +7,9 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "ADFsqltopraquet"
 		},
-		"SQLSERVER_SP_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'SQLSERVER_SP'"
-		},
-		"LS_SQL_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_SQL'"
-		},
 		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
-		"SqlServer1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'SqlServer1'"
 		},
 		"AzureBlobStorage2_connectionString": {
 			"type": "secureString",
@@ -31,45 +19,21 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage3'"
 		},
+		"LS_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL'"
+		},
 		"LS_Validation_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Validation'"
 		},
-		"SQLSERVER_SP_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "PALASHLAPTOP\\SQLEXPRESS"
+		"SQLSERVER_SP_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SQLSERVER_SP'"
 		},
-		"SQLSERVER_SP_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "master"
-		},
-		"SQLSERVER_SP_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "sa"
-		},
-		"LS_SQL_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "PALASHLAPTOP\\SQLEXPRESS"
-		},
-		"LS_SQL_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "AdventureWorks2025"
-		},
-		"LS_SQL_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "sa"
-		},
-		"SqlServer1_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "PALASHLAPTOP\\SQLEXPRESS"
-		},
-		"SqlServer1_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "AdventureWorks2025"
-		},
-		"SqlServer1_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "sa"
+		"SqlServer1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SqlServer1'"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -86,6 +50,42 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "admindata"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "PALASHLAPTOP\\SQLEXPRESS"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2025"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"SQLSERVER_SP_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "PALASHLAPTOP\\SQLEXPRESS"
+		},
+		"SQLSERVER_SP_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"SQLSERVER_SP_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "PALASHLAPTOP\\SQLEXPRESS"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2025"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
 		},
 		"containerUri": {
 			"type": "string",
@@ -126,11 +126,11 @@
 					"LS_Validation_connectionString": {
 						"value": "[parameters('LS_Validation_connectionString')]"
 					},
-					"SQLSERVER_SP_password": {
-						"value": "[parameters('SQLSERVER_SP_password')]"
-					},
 					"LS_SQL_password": {
 						"value": "[parameters('LS_SQL_password')]"
+					},
+					"SQLSERVER_SP_password": {
+						"value": "[parameters('SQLSERVER_SP_password')]"
 					},
 					"SqlServer1_password": {
 						"value": "[parameters('SqlServer1_password')]"
@@ -138,14 +138,14 @@
 					"AzureKeyVault1_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 					},
-					"SQLSERVER_SP_properties_typeProperties_server": {
-						"value": "[parameters('SQLSERVER_SP_properties_typeProperties_server')]"
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
 					},
-					"SQLSERVER_SP_properties_typeProperties_database": {
-						"value": "[parameters('SQLSERVER_SP_properties_typeProperties_database')]"
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
 					},
-					"SQLSERVER_SP_properties_typeProperties_userName": {
-						"value": "[parameters('SQLSERVER_SP_properties_typeProperties_userName')]"
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
 					},
 					"LS_SQL_properties_typeProperties_server": {
 						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
@@ -156,6 +156,15 @@
 					"LS_SQL_properties_typeProperties_userName": {
 						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
 					},
+					"SQLSERVER_SP_properties_typeProperties_server": {
+						"value": "[parameters('SQLSERVER_SP_properties_typeProperties_server')]"
+					},
+					"SQLSERVER_SP_properties_typeProperties_database": {
+						"value": "[parameters('SQLSERVER_SP_properties_typeProperties_database')]"
+					},
+					"SQLSERVER_SP_properties_typeProperties_userName": {
+						"value": "[parameters('SQLSERVER_SP_properties_typeProperties_userName')]"
+					},
 					"SqlServer1_properties_typeProperties_server": {
 						"value": "[parameters('SqlServer1_properties_typeProperties_server')]"
 					},
@@ -164,15 +173,6 @@
 					},
 					"SqlServer1_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
-					},
-					"AzureSqlDatabase1_properties_typeProperties_server": {
-						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
-					},
-					"AzureSqlDatabase1_properties_typeProperties_database": {
-						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
-					},
-					"AzureSqlDatabase1_properties_typeProperties_userName": {
-						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
 					}
 				}
 			},
