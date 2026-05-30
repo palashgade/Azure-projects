@@ -1,0 +1,25 @@
+{
+	"name": "TRG_SCHEDULE_CSV_PRAQUET",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Validation_act",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2026-05-30T15:15:00",
+				"endTime": "2026-05-31T09:29:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
