@@ -32,6 +32,32 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "SQL_LOOKUP",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT TOP (10) [BusinessEntityID]\n      ,[NationalIDNumber]\n      ,[LoginID]\n      ,[OrganizationNode]\n      ,[OrganizationLevel]\n      ,[JobTitle]\n      ,[BirthDate]\n      ,[MaritalStatus]\n      ,[Gender]\n      ,[HireDate]\n      ,[SalariedFlag]\n      ,[VacationHours]\n      ,[SickLeaveHours]\n      ,[CurrentFlag]\n      ,[rowguid]\n      ,[ModifiedDate]\n  FROM [AdventureWorks2025].[HumanResources].[Employee]\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlServerTable2",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
 			}
 		],
 		"annotations": []
