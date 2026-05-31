@@ -17,10 +17,28 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage3_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage4_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage5_accountKey": {
+			"value": ""
+		},
+		"LS_FILTER_accountKey": {
+			"value": ""
+		},
 		"LS_SQL_password": {
 			"value": ""
 		},
 		"LS_Validation_connectionString": {
+			"value": ""
+		},
+		"LS_getmeta_accountKey": {
 			"value": ""
 		},
 		"SQLSERVER_SP_password": {
@@ -32,16 +50,19 @@
 		"SqlServer2_password": {
 			"value": ""
 		},
-		"LS_getmeta_accountKey": {
-			"value": ""
-		},
-		"LS_FILTER_accountKey": {
-			"value": ""
-		},
-		"AzureDataLakeStorage2_accountKey": {
-			"value": ""
-		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://adlsdevload16.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://adlsdevload16.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage3_properties_typeProperties_url": {
+			"value": "https://adlsdevload16.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage4_properties_typeProperties_url": {
+			"value": "https://adlsdevload16.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage5_properties_typeProperties_url": {
 			"value": "https://adlsdevload16.dfs.core.windows.net/"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
@@ -56,6 +77,9 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "admindata"
 		},
+		"LS_FILTER_properties_typeProperties_url": {
+			"value": "https://adlsdevload16.dfs.core.windows.net/"
+		},
 		"LS_SQL_properties_typeProperties_server": {
 			"value": "PALASHLAPTOP\\SQLEXPRESS"
 		},
@@ -64,6 +88,9 @@
 		},
 		"LS_SQL_properties_typeProperties_userName": {
 			"value": "sa"
+		},
+		"LS_getmeta_properties_typeProperties_url": {
+			"value": "https://adlsdevload16.dfs.core.windows.net/"
 		},
 		"SQLSERVER_SP_properties_typeProperties_server": {
 			"value": "PALASHLAPTOP\\SQLEXPRESS"
@@ -91,15 +118,6 @@
 		},
 		"SqlServer2_properties_typeProperties_userName": {
 			"value": "sa"
-		},
-		"LS_getmeta_properties_typeProperties_url": {
-			"value": "https://adlsdevload16.dfs.core.windows.net/"
-		},
-		"LS_FILTER_properties_typeProperties_url": {
-			"value": "https://adlsdevload16.dfs.core.windows.net/"
-		},
-		"AzureDataLakeStorage2_properties_typeProperties_url": {
-			"value": "https://adlsdevload16.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""
