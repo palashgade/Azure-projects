@@ -111,7 +111,7 @@
 		"parameters": {
 			"action": {
 				"type": "string",
-				"defaultValue": "copy"
+				"defaultValue": "Case2"
 			}
 		},
 		"annotations": []
