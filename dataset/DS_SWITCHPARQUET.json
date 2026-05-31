@@ -1,0 +1,19 @@
+{
+	"name": "DS_SWITCHPARQUET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SWITCHPARQUET",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "outputday17"
+			},
+			"compressionCodec": "none"
+		},
+		"schema": []
+	}
+}
