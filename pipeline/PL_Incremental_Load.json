@@ -45,6 +45,7 @@
 						"value": "@activity('LKUP_SQLTABLE_WATRMRK_DW').output.value",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "EXE_CHILD_INCREMENTAL_LOAD",
@@ -80,6 +81,23 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Fail1",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": "not working",
+					"errorCode": "121212"
 				}
 			}
 		],
