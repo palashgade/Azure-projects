@@ -2,7 +2,7 @@
 	"name": "DS_LOOPUP_sql",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "DS_LOOPUP_sql",
+			"referenceName": "LS_SQL_ADLS2",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
