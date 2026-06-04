@@ -1,0 +1,12 @@
+{
+	"name": "DS_LOOPUP_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DS_LOOPUP_sql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}

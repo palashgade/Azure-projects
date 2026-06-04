@@ -1,0 +1,174 @@
+{
+	"name": "PL_Child_Incremental_Load",
+	"properties": {
+		"activities": [
+			{
+				"name": "LKUP_MAX_VALUE",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "@concat(\n'SELECT MAX(',\npipeline().parameters.WatermarkColumn,\n') AS MaxValue FROM ',\npipeline().parameters.TableSchema,\n'.',\npipeline().parameters.TableName\n)",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_SQL_ADLS",
+						"type": "DatasetReference",
+						"parameters": {
+							"SchemaName": "dbo",
+							"TableName": "ADF_Watermark_Table"
+						}
+					}
+				}
+			},
+			{
+				"name": "IF_NEW_DATA_EXISTS",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "LKUP_MAX_VALUE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@or(\nequals(pipeline().parameters.LastLoadValue, null),\ngreater(\nint(activity('LKUP_MAX_VALUE').output.firstRow.MaxValue),\nint(pipeline().parameters.LastLoadValue)\n)\n)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "COPY_SQL_TO_ADLS_PARQUET",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": "@concat(\n'SELECT * FROM ',\npipeline().parameters.TableSchema,\n'.',\npipeline().parameters.TableName,\nif(\nequals(pipeline().parameters.LastLoadValue, null),\n'',\nconcat(\n' WHERE ',\npipeline().parameters.WatermarkColumn,\n' > ',\npipeline().parameters.LastLoadValue\n)\n)\n)",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_SQL_ADLS",
+									"type": "DatasetReference",
+									"parameters": {
+										"SchemaName": "dbo",
+										"TableName": "ADF_Watermark_Table"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_ADLS_PARQUET",
+									"type": "DatasetReference",
+									"parameters": {
+										"Table_Name": "@pipeline().parameters.TableName"
+									}
+								}
+							]
+						},
+						{
+							"name": "SP_UPDATE_WATERMARK",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "COPY_SQL_TO_ADLS_PARQUET",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[UpdateWatermark]",
+								"storedProcedureParameters": {
+									"TableSchema": {
+										"value": "@pipeline().parameters.TableSchema",
+										"type": "String"
+									},
+									"TableName": {
+										"value": "@pipeline().parameters.TableName",
+										"type": "String"
+									},
+									"WatermarkColumn": {
+										"value": "@pipeline().parameters.WatermarkColumn",
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_SQL_ADLS2",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"TableSchema": {
+				"type": "string"
+			},
+			"TableName": {
+				"type": "string"
+			},
+			"WatermarkColumn": {
+				"type": "string"
+			},
+			"LastLoadValue": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}

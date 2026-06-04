@@ -1,0 +1,88 @@
+{
+	"name": "PL_Incremental_Load",
+	"properties": {
+		"activities": [
+			{
+				"name": "LKUP_SQLTABLE_WATRMRK_DW",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT TableSchema,\n       TableName,\n       WatermarkColumn,\n       LastLoadValue\nFROM dbo.ADF_Watermark_Table;",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_LOOPUP_sql",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LKUP_SQLTABLE_WATRMRK_DW",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LKUP_SQLTABLE_WATRMRK_DW').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "EXE_CHILD_INCREMENTAL_LOAD",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "TableSchema",
+									"value": "@item().TableSchema"
+								},
+								{
+									"name": "TableName",
+									"value": "@item().TableName"
+								},
+								{
+									"name": "WatermarkColumn",
+									"value": "@item().WatermarkColumn"
+								},
+								{
+									"name": "LastLoadValue",
+									"value": "@item().LastLoadValue"
+								}
+							],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_Child_Incremental_Load",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}
