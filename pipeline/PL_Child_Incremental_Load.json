@@ -67,7 +67,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"sqlReaderQuery": "@concat(\n'SELECT * FROM ',\npipeline().parameters.TableSchema,\n'.',\npipeline().parameters.TableName,\nif(\nequals(pipeline().parameters.LastLoadValue, null),\n'',\nconcat(\n' WHERE ',\npipeline().parameters.WatermarkColumn,\n' > ',\npipeline().parameters.LastLoadValue\n)\n)\n)",
+									"sqlReaderQuery": {
+										"value": "@concat(\n'SELECT * FROM ',\npipeline().parameters.TableSchema,\n'.',\npipeline().parameters.TableName,\nif(\nequals(pipeline().parameters.LastLoadValue, null),\n'',\nconcat(\n' WHERE ',\npipeline().parameters.WatermarkColumn,\n' > ',\npipeline().parameters.LastLoadValue\n)\n)\n)",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -132,12 +135,18 @@
 							"typeProperties": {
 								"storedProcedureName": "[dbo].[UpdateWatermark]",
 								"storedProcedureParameters": {
-									"TableSchema": {
-										"value": "@pipeline().parameters.TableSchema",
+									"TableName": {
+										"value": {
+											"value": "@pipeline().parameters.TableName",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
-									"TableName": {
-										"value": "@pipeline().parameters.TableName",
+									"TableSchema": {
+										"value": {
+											"value": "@pipeline().parameters.TableSchema",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"WatermarkColumn": {
