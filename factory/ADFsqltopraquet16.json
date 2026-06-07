@@ -1,0 +1,15 @@
+{
+	"name": "ADFsqltopraquet16",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "766bd9e8-57d0-4301-a233-1684e3f3b01d",
+		"tenantId": "746a33df-13ea-485f-8928-04deb934e784"
+	}
+}
